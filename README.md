@@ -13,7 +13,7 @@ graph TD
     classDef mono fill:#ffffff,stroke:#333,stroke-width:1px,color:#000000;
 
     subgraph Input ["Input Data"]
-    A[🛒 Raw Data]:::mono
+    A[Raw Data]:::mono
     end
 
     subgraph Preprocessing ["1. Preprocessing"]
