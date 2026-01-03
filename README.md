@@ -63,7 +63,11 @@ graph TD
 **"통계적 전처리와 PCA를 활용한 모델 최적화"**
 
 ### Outlier Detection
-
+<p align="center">
+  <img src="assets/outlier_graph.png" alt="Outlier" width="80%">
+  <br>
+  <em>[그림] 93.51%의 데이터가 정상치(0)으로 라벨링</em>
+</p>
 - **Z-Score 활용:** 데이터 왜곡 방지를 위해 표준화(Standardization) 후, Z-Score 임계값(Threshold)을 **3**으로 설정
 - **결과:** 전체 데이터의 약 **6%**에 해당하는 통계적 이상치를 제거하여 분석 품질을 확보
 
