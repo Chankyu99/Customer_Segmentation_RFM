@@ -6,7 +6,7 @@ graph LR
 
     subgraph Input ["Input Data"]
     direction LR
-    A[🛒 Raw Data]:::mono
+    A[Raw Data]:::mono
     end
 
     subgraph Preprocessing ["1. Preprocessing"]
