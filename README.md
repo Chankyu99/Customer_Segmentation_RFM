@@ -66,7 +66,7 @@ graph TD
 <p align="center">
   <img src="assets/outlier_graph.png" alt="Outlier" width="80%">
   <br>
-  <em>[그림] 93.51%의 데이터가 정상치(0)으로 라벨링</em>
+  <em>[figure1] 93.51%의 데이터가 정상치(0)으로 라벨링</em>
 </p>
 
 - **Z-Score 활용:** 데이터 왜곡 방지를 위해 표준화(Standardization) 후, Z-Score 임계값(Threshold)을 **3**으로 설정
@@ -75,6 +75,11 @@ graph TD
 
 ### PCA
 
+<p align="center">
+  <img src="assets/pca.png" alt="PCA" width="80%">
+  <br>
+  <em>[figure2] PCA - Elbow point search</em>
+</p>
 
 - **다중공선성 해결:** 상관관계 히트맵 분석 후, 정보 손실을 최소화하며 차원을 줄이기 위해 PCA를 적용
 - **Elbow Point 선정:** 설명 분산(Explained Variance) 비율이 둔화되는 지점을 찾아 **6개의 주성분(PC)**을 최종 특성으로 선정
