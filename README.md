@@ -1,32 +1,39 @@
 ## 아키텍처
 ```mermaid
 graph LR
-    subgraph Input
-    A[🛒 Raw Data]
+    %% 스타일 정의 (파스텔 톤 + 둥근 모서리)
+    classDef input fill:#f9f9f9,stroke:#9e9e9e,stroke-width:2px,rx:10,ry:10;
+    classDef prep fill:#fff3e0,stroke:#ffb74d,stroke-width:2px,rx:10,ry:10;
+    classDef feature fill:#e3f2fd,stroke:#64b5f6,stroke-width:2px,rx:10,ry:10;
+    classDef model fill:#f3e5f5,stroke:#ba68c8,stroke-width:2px,rx:10,ry:10;
+    classDef result fill:#e8f5e9,stroke:#81c784,stroke-width:2px,rx:10,ry:10;
+
+    subgraph Input ["💾 Input"]
+    A[🛒 Raw Data]:::input
     end
 
-    subgraph Preprocessing ["1. Preprocessing"]
+    subgraph Preprocessing ["🛠️ Preprocessing"]
     direction LR
-    B[RFM Table] --> C{"Outlier Check<br>(Z-Score > 3)"}
-    C -- Yes --> D[Remove]
-    C -- No --> E[Clean Data]
+    B[RFM Table]:::prep --> C{"Outlier Check<br>(Z-Score > 3)"}:::prep
+    C -- Yes --> D[Remove]:::prep
+    C -- No --> E[Clean Data]:::prep
     D --> E
-    E --> F["Correlation<br>(Drop Multi-col)"]
+    E --> F["Correlation<br>(Drop Multi-col)"]:::prep
     end
 
-    subgraph Feature ["2. Feature Eng"]
-    F --> G[Scaling]
-    G --> H["PCA<br>(6 Components)"]
+    subgraph Feature ["⚙️ Feature Eng"]
+    F --> G[Scaling]:::feature
+    G --> H["PCA<br>(6 Components)"]:::feature
     end
 
-    subgraph Modeling ["3. Modeling"]
-    H --> I[K-Means]
-    I --> J[Labeling]
+    subgraph Modeling ["🧠 Modeling"]
+    H --> I[K-Means]:::model
+    I --> J[Label Stabilization]:::model
     end
 
-    subgraph Output ["4. Result"]
-    J --> K[3D Viz]
-    J --> L[Strategy]
+    subgraph Output ["📊 Result"]
+    J --> K[3D Viz]:::result
+    J --> L[Strategy]:::result
     end
 ```
 
