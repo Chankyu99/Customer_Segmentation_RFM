@@ -1,34 +1,33 @@
 ## 아키텍처
 ```mermaid
-graph TD
-    subgraph Input_Data
-    A[🛒 Raw Transaction Data]
+graph LR
+    subgraph Input
+    A[🛒 Raw Data]
     end
 
-    subgraph Data_Preprocessing["1. Data Preprocessing (Quality Control)"]
-    B[RFM Table Creation] --> C{"Outlier Detection<br>(Z-Score > 3)"}
-    C -- Yes --> D[Remove Noise]
-    C -- No --> E[Data Cleaning]
-    E --> F["Correlation Analysis<br>(Drop Multicollinearity)"]
-    end
-
-    subgraph Feature_Engineering["2. Feature Engineering"]
-    G[Standard Scaling] --> H["PCA <br>(Dimensionality Reduction)"]
-    end
-
-    subgraph Modeling["3. AI Modeling"]
-    H --> I[K-Means Clustering]
-    I --> J[Label Stabilization]
-    end
-
-    subgraph Output["4. Insight & Strategy"]
-    J --> K[3D Visualization]
-    J --> L[Customer Segmentation Strategy]
-    end
-
-    A --> B
+    subgraph Preprocessing ["1. Preprocessing"]
+    direction LR
+    B[RFM Table] --> C{"Outlier Check<br>(Z-Score > 3)"}
+    C -- Yes --> D[Remove]
+    C -- No --> E[Clean Data]
     D --> E
-    F --> G
+    E --> F["Correlation<br>(Drop Multi-col)"]
+    end
+
+    subgraph Feature ["2. Feature Eng"]
+    F --> G[Scaling]
+    G --> H["PCA<br>(6 Components)"]
+    end
+
+    subgraph Modeling ["3. Modeling"]
+    H --> I[K-Means]
+    I --> J[Labeling]
+    end
+
+    subgraph Output ["4. Result"]
+    J --> K[3D Viz]
+    J --> L[Strategy]
+    end
 ```
 
 ## 1. 프로젝트 개요
