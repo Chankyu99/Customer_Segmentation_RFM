@@ -1,3 +1,36 @@
+## 아키텍처
+```mermaid
+graph TD
+    subgraph Input_Data
+    A[🛒 Raw Transaction Data]
+    end
+
+    subgraph Data_Preprocessing["1. Data Preprocessing (Quality Control)"]
+    B[RFM Table Creation] --> C{Outlier Detection<br>(Z-Score > 3)}
+    C -- Yes --> D[Remove Noise]
+    C -- No --> E[Data Cleaning]
+    E --> F[Correlation Analysis<br>(Drop Multicollinearity)]
+    end
+
+    subgraph Feature_Engineering["2. Feature Engineering"]
+    G[Standard Scaling] --> H[PCA <br>(Dimensionality Reduction)]
+    end
+
+    subgraph Modeling["3. AI Modeling"]
+    H --> I[K-Means Clustering]
+    I --> J[Label Stabilization]
+    end
+
+    subgraph Output["4. Insight & Strategy"]
+    J --> K[3D Visualization]
+    J --> L[Customer Segmentation Strategy]
+    end
+
+    A --> B
+    D --> E
+    F --> G
+```
+
 ## 1. 프로젝트 개요
 고객의 구매 데이터(User Data)를 기반으로 **RFM(Recency, Frequency, Monetary)** 분석과 **K-Means 클러스터링**을 수행하여 고객을 세분화하고, 이를 바탕으로 데이터 기반의 마케팅 전략을 수립한 프로젝트입니다.
 
