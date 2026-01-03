@@ -1,39 +1,36 @@
 ## 아키텍처
 ```mermaid
 graph LR
-    %% 스타일 정의 (파스텔 톤 + 둥근 모서리)
-    classDef input fill:#f9f9f9,stroke:#9e9e9e,stroke-width:2px,rx:10,ry:10;
-    classDef prep fill:#fff3e0,stroke:#ffb74d,stroke-width:2px,rx:10,ry:10;
-    classDef feature fill:#e3f2fd,stroke:#64b5f6,stroke-width:2px,rx:10,ry:10;
-    classDef model fill:#f3e5f5,stroke:#ba68c8,stroke-width:2px,rx:10,ry:10;
-    classDef result fill:#e8f5e9,stroke:#81c784,stroke-width:2px,rx:10,ry:10;
+    %% 스타일 정의: 흰색 배경, 검은색 테두리, 검은색 글씨
+    classDef mono fill:#ffffff,stroke:#333,stroke-width:1px,color:#000000;
 
-    subgraph Input ["💾 Input"]
-    A[🛒 Raw Data]:::input
-    end
-
-    subgraph Preprocessing ["🛠️ Preprocessing"]
+    subgraph Input ["Input Data"]
     direction LR
-    B[RFM Table]:::prep --> C{"Outlier Check<br>(Z-Score > 3)"}:::prep
-    C -- Yes --> D[Remove]:::prep
-    C -- No --> E[Clean Data]:::prep
-    D --> E
-    E --> F["Correlation<br>(Drop Multi-col)"]:::prep
+    A[🛒 Raw Data]:::mono
     end
 
-    subgraph Feature ["⚙️ Feature Eng"]
-    F --> G[Scaling]:::feature
-    G --> H["PCA<br>(6 Components)"]:::feature
+    subgraph Preprocessing ["1. Preprocessing"]
+    direction LR
+    B[RFM Table]:::mono --> C{"Outlier Check<br>(Z-Score > 3)"}:::mono
+    C -- Yes --> D[Remove]:::mono
+    C -- No --> E[Clean Data]:::mono
+    D -.-> E
+    E --> F["Correlation Check<br>(Drop Multi-col)"]:::mono
     end
 
-    subgraph Modeling ["🧠 Modeling"]
-    H --> I[K-Means]:::model
-    I --> J[Label Stabilization]:::model
+    subgraph Feature ["2. Feature Eng"]
+    F --> G[Standard Scaling]:::mono
+    G --> H["PCA<br>(6 Components)"]:::mono
     end
 
-    subgraph Output ["📊 Result"]
-    J --> K[3D Viz]:::result
-    J --> L[Strategy]:::result
+    subgraph Modeling ["3. Modeling"]
+    H --> I[K-Means]:::mono
+    I --> J[Label Stabilization]:::mono
+    end
+
+    subgraph Output ["4. Result"]
+    J --> K[3D Viz]:::mono
+    J --> L[Strategy]:::mono
     end
 ```
 
