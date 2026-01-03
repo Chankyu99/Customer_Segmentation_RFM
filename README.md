@@ -6,14 +6,14 @@ graph TD
     end
 
     subgraph Data_Preprocessing["1. Data Preprocessing (Quality Control)"]
-    B[RFM Table Creation] --> C{Outlier Detection<br>(Z-Score > 3)}
+    B[RFM Table Creation] --> C{"Outlier Detection<br>(Z-Score > 3)"}
     C -- Yes --> D[Remove Noise]
     C -- No --> E[Data Cleaning]
-    E --> F[Correlation Analysis<br>(Drop Multicollinearity)]
+    E --> F["Correlation Analysis<br>(Drop Multicollinearity)"]
     end
 
     subgraph Feature_Engineering["2. Feature Engineering"]
-    G[Standard Scaling] --> H[PCA <br>(Dimensionality Reduction)]
+    G[Standard Scaling] --> H["PCA <br>(Dimensionality Reduction)"]
     end
 
     subgraph Modeling["3. AI Modeling"]
