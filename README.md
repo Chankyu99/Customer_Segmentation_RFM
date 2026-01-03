@@ -1,6 +1,6 @@
 ## 아키텍처
 ```mermaid
-graph LR
+graph TD
     %% 스타일 정의: 흰색 배경, 검은색 테두리, 검은색 글씨
     classDef mono fill:#ffffff,stroke:#333,stroke-width:1px,color:#000000;
 
