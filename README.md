@@ -78,7 +78,7 @@ graph TD
 <p align="center">
   <img src="assets/pca.png" alt="PCA" width="80%">
   <br>
-  <em>[figure2] PCA - Elbow point search</em>
+  <em>[figure2] PCA - Elbow point 탐색</em>
 </p>
 
 - **다중공선성 해결:** 상관관계 히트맵 분석 후, 정보 손실을 최소화하며 차원을 줄이기 위해 PCA를 적용
